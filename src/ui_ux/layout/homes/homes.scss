@@ -1,0 +1,10 @@
+@import '../../abstracts/variables.scss';
+
+$cmp: 'homes';
+
+.#{$cmp} {
+  &__base {
+    background-color: $color-secondary;
+    grid-column: center-start / center-end;
+  }
+}

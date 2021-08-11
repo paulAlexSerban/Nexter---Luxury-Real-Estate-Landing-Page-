@@ -1,0 +1,10 @@
+@import '../../abstracts/variables.scss';
+
+$cmp: 'gallery';
+
+.#{$cmp} {
+  &__base {
+    background-color: $color-grey-dark-1;
+    grid-column: full-start / full-end;
+  }
+}

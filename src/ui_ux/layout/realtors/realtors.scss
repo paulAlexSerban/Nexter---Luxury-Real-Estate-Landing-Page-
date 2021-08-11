@@ -1,0 +1,10 @@
+@import '../../abstracts/variables.scss';
+
+$cmp: 'realtors';
+
+.#{$cmp} {
+  &__base {
+    background-color: $color-secondary;
+    grid-column: col-start 7 / full-end;
+  }
+}

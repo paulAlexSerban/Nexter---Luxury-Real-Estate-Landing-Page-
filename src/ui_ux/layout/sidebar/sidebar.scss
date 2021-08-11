@@ -1,0 +1,11 @@
+@import '../../abstracts/variables.scss';
+
+$cmp: 'sidebar';
+
+.#{$cmp} {
+  &__base {
+    background-color: $color-primary;
+    grid-column: sidebar-start / sidebar-end;
+    grid-row: 1 / -1; // start at the beginning and grows to the end
+  }
+}
