@@ -5,7 +5,6 @@ $cmp: 'story';
 .#{$cmp} {
   &__base {
     display: grid;
-    grid-template-rows: 1fr;
     grid-column: full-start / full-end;
     grid-template-columns: repeat(2, 1fr);
 
