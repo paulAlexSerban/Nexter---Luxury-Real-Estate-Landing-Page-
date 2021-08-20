@@ -3,7 +3,7 @@
 $cmp: 'button';
 
 .#{$cmp} {
-  &__base {
+  &__cta {
     background-color: $color-primary;
     color: $color-grey-light-1;
     border: none;
@@ -17,6 +17,10 @@ $cmp: 'button';
 
     &:hover {
       background-color: $color-primary-dark;
+    }
+
+    &--card { 
+      grid-column: 1 / -1;
     }
   }
 }
