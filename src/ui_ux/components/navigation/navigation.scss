@@ -1,0 +1,46 @@
+@import '../../abstracts/variables.scss';
+
+$cmp: 'navigation';
+
+.#{$cmp} {
+  &__base {
+
+  }
+
+  &__list {
+    list-style: none;
+
+    /*
+    Even though it is a one dimensional layout, CSS Grid is a better choice because it is easier to space the items
+    */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem;
+    align-items: center;
+  }
+
+  &__item {
+
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      font-size: 1.4rem;
+      color: $color-grey-light-1;
+      font-family: $font-display;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      padding: 1.5rem;
+      display: block;
+      transition: all .2s;
+    }
+
+    &:hover,
+    &:active {
+      background-color: rgba($color-grey-light-1, 0.05);
+      transform: translateY(-3px);
+    }
+  }
+}

@@ -6,5 +6,6 @@ $cmp: 'footer';
   &__base {
     background-color: $color-secondary;
     grid-column: full-start / full-end;
+    padding: 8rem;
   }
 }
