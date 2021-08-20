@@ -7,5 +7,8 @@ $cmp: 'sidebar';
     background-color: $color-primary;
     grid-column: sidebar-start / sidebar-end;
     grid-row: 1 / -1; // start at the beginning and grows to the end
+
+    display: flex;
+    justify-content: center;
   }
 }
