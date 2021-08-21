@@ -19,6 +19,11 @@ $cmp: 'button';
       background-color: $color-primary-dark;
     }
 
+    &--header {
+      align-self: start;
+      justify-self: start;
+    }
+
     &--card { 
       grid-column: 1 / -1;
     }

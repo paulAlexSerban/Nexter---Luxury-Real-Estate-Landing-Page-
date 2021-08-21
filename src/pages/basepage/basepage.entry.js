@@ -1,6 +1,7 @@
 import './basepage.styles.scss';
 
 // import JS Components
+import Header from '../../ui_ux/layout/header/header';
 import Story from '../../ui_ux/layout/story/story';
 
 /**
