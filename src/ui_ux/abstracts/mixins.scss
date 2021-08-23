@@ -24,11 +24,11 @@
   }
 }
 
-$mobile-xs: 500px;
-$mobile : 600px;
-$tablet: 900px;
-$desktop: 1101px;
-$desktop-lg: 1201px;
+$mobile-xs: 31.25em; // 500px
+$mobile : 37.5em; // 600px
+$tablet: 56.25em; // 900px;
+$desktop: 63.125em; // 1101px;
+$desktop-lg: 75.0625em; // 1201px;
 
 @mixin respond($breakpoint) {
   @if $breakpoint == touch-phone-only {

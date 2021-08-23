@@ -5,7 +5,7 @@ $cmp: 'realtors';
 .#{$cmp} {
   &__base {
     background-color: $color-secondary;
-    grid-column: col-start 7 / full-end;
+    grid-column: 1 / -1;
     padding: 3rem;
 
     display: grid;
@@ -13,6 +13,10 @@ $cmp: 'realtors';
     justify-content: center;
     justify-items: center;
     grid-row-gap: 2rem;
+
+    @include respond(min-tab-port) {
+      grid-column: col-start 7 / full-end;
+    }
   }
 
   &__list {
@@ -21,6 +25,14 @@ $cmp: 'realtors';
     grid-column-gap: 2rem;
     grid-row-gap: 5vh;
     align-items: center;
+
+    @include respond(min-mobile) {
+      grid-template-columns: repeat(3, min-content max-content);
+    }
+
+    @include respond(min-tab-port) {
+      grid-template-columns: min-content max-content;
+    }
   }
 
   &__image {

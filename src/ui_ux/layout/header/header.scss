@@ -5,18 +5,24 @@ $cmp: 'header';
 .#{$cmp} {
   &__base {
     background-color: $color-grey-dark-1;
-    grid-column: full-start / col-end 6;
+    grid-column: 1 / -1;
     background-image: linear-gradient(rgba($color-secondary, 0.93), rgba($color-secondary, 0.93)), 
                       url('../../../assets/images/hero.jpeg');
     background-position: center;
     background-size: cover;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
     grid-row: 1.5rem;
-    padding: 4rem 8rem 8rem 8rem;
+    padding: 4rem 5rem 5rem 5rem;
     justify-content: center;
+
+
+    @include respond(min-tab-port) {
+      grid-column: full-start / col-end 6;
+      padding: 4rem 8rem 8rem 8rem;
+    }
   }
 
   &__logo {
@@ -48,9 +54,11 @@ $cmp: 'header';
     grid-column-gap: 3rem;
     justify-items: center;
     margin-top: 2rem;
+    align-items: center;
 
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       filter: brightness(70%);
     }
   }
