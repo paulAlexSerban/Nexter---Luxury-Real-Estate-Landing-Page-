@@ -62,9 +62,7 @@ jobs:
       - name: "📦  Install Frontend Nexter Website Development dependencies"
         if: steps.changed-frontend-nexter-website-files.outputs.any_changed == 'true'
         run: |
-          bash scripts/frontend-nexter-website-install.bash
-          bash scripts/frontend-living-style-guide-install.bash
-          bash scripts/assets-install.bash
+          bash scripts/install.bash
 
       - name: "🔍  Lint Frontend Nexter Website"
         if: steps.changed-frontend-nexter-website-files.outputs.any_changed == 'true' && github.event_name == 'push'

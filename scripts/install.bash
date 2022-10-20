@@ -4,7 +4,7 @@ cd "$(dirname "$0")" || exit
 
 echo "🛑  Cleaning ALL Nexter node_modules"
 rm -rfv ../frontend/living-style-guide/node_modules
-rm -rfv ../assets
+rm -rfv ../assets/node_modules
 rm -rfv ../frontend/nexter-website/node_modules
 
 echo "🔧  Installing ALL Nexter"

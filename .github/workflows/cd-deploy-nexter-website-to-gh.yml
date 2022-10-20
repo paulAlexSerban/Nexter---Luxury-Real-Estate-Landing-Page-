@@ -29,13 +29,9 @@ jobs:
       - name: "🔧 Install npm@latest"
         run: npm i -g npm@latest
 
-      - name: "📦  Install Assets dependencies"
-        run: |
-          bash scripts/assets-install.bash
-
       - name: "📦  Install Nexter Website Development dependencies"
         run: |
-          bash scripts/frontend-nexter-website-install.bash
+          bash scripts/install.bash
 
       - name: "🏗️  Build Frontend Nexter Website"
         run: |
