@@ -7,16 +7,12 @@ import debug from "gulp-debug";
 import { onError } from  "../utils/onError";
 
 export const lintHtml = () => {
-  return new Promise((resolve, reject) => {
-    return src(paths.src.html.htmlFiles, { since: lastRun(lintHtml) })
-    .pipe(plumber({
-      errorHandler: onError,
-    }))
-    .pipe(debug({ title: "htmlLint : " }))
-    .pipe(lint({}, htmlLintReporter))
-    .on("error", reject)
-    .on("end", resolve);
-  })
+  return src(paths.src.html.htmlFiles, { since: lastRun(lintHtml) })
+  .pipe(plumber({
+    errorHandler: onError,
+  }))
+  .pipe(debug({ title: "htmlLint : " }))
+  .pipe(lint({}, htmlLintReporter))
 };
 
 function htmlLintReporter(filepath, issues) {
@@ -27,4 +23,5 @@ function htmlLintReporter(filepath, issues) {
     });
     process.exitCode = 1;
   }
+  process.exitCode = 0;
 }

@@ -8,6 +8,7 @@ import plumber from "gulp-plumber";
 import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
 import stripCssComments from "gulp-strip-css-comments";
+
 import prettier from "gulp-prettier";
 import wait from "gulp-wait";
 import { onError } from "../utils/onError";
@@ -21,7 +22,9 @@ const plugins = [autoprefixer()];
 const nodeEnv = process.env.NODE_ENV || "development";
 
 export const compileScss = () => {
-  console.log(`Executing Compile SCSS on '${paths.src.styles.scssPages}'`);
+  console.log(
+    `Executing Compile SCSS on ${paths.src.styles.scssPages}`
+  );
   return new Promise((resolve, reject) => {
     return (
       src([...paths.src.styles.scssPages])
@@ -40,17 +43,14 @@ export const compileScss = () => {
           })
         )
         .pipe(
-          cleanCss(
-            {
-              debug: true,
-              level: {
-                2: {
-                  restructureRules: true,
-                  removeDuplicateRules: true,
-                },
+          cleanCss({
+            level: {
+              2: {
+                restructureRules: true,
+                removeDuplicateRules: true,
               },
             },
-          )
+          })
         )
         // .pipe(debug({ title: "@debug compileScss : " }))
         .pipe(stripCssComments())

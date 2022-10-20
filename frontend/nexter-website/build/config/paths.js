@@ -5,6 +5,7 @@ export const paths = {
     },
     assets: {
       assetFiles: ["../../assets/dist/**/*"],
+      svgFiles: ["dist/assets/svgs"]
     },
     html: {
       htmlDir: "./source",
@@ -13,13 +14,7 @@ export const paths = {
     styles: {
       scssDir: `../living-style-guide/source/`,
       scssFiles: [`../living-style-guide/source/**/*.scss`],
-      scssPages: [`../living-style-guide/source/**/*.page.scss`, `../living-style-guide/source/**/*.page.devTools.scss`],
-      scssLayers: [`../living-style-guide/source/**/*.layer.scss`],
-    },
-    scripts: {
-      javaScriptDir: `../js-component-library/source/`,
-      javaScriptFiles: [`../js-component-library/source/**/*.js`],
-      javaScriptEntry: [`../js-component-library/source/**/*.entry.js`],
+      scssPages: [`../living-style-guide/source/**/*.page.scss`],
     }
   },
   dist: {
