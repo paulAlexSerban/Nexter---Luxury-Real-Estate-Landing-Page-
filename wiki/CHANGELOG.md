@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/compare/v1.0.0...v1.0.1) (2022-10-20)
+
+
+### Bug Fixes
+
+* **deploy:** package script is using the ole name inherited from boilerplate ([f0a979f](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/f0a979fb7d62f8303834689982c523c6355ff7c6))
+
 # 1.0.0 (2022-10-20)
 
 
