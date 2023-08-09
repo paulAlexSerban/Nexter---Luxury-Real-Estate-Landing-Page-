@@ -34,7 +34,13 @@ jobs:
             path: ~/.npm
             key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
             restore-keys: ${{ runner.os }}-node-
-      
+
+      - name: "🔍  Verify Changed Files"
+        uses: tj-actions/changed-files@v35
+        id: changed-frontend-landing-website-files
+        with:
+          files: ${{ env.FE_LANDING_PROJECT_ROOT }}/**/*
+
       - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
         uses: actions/setup-node@v3
         with:
@@ -49,13 +55,13 @@ jobs:
       - name: "📦  Install Frontend Landing Website dependencies"
         # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
         run: |
-          bash modulize.bash -e prod -p install -m assets
-          bash modulize.bash -e prod -p install -m poc_nexter-landing
+          bash modulize.bash -e gh_pages -p install -m assets
+          bash modulize.bash -e gh_pages -p install -m poc_nexter-landing
 
       - name: "🏗️  Build Frontend Landing Website For GitHub Pages"
         # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
         run: |
-          bash modulize.bash -e prod -p process -m assets
+          bash modulize.bash -e gh_pages -p process
           bash modulize.bash -e gh_pages -p build
 
       - name: "🚚  Package Frontend Landing Website"
@@ -64,7 +70,7 @@ jobs:
           bash modulize.bash -e prod -p package -m poc_nexter-landing
 
       - name: "🚀 Deploy to GitHub Pages"
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: package/poc_nexter-landing
