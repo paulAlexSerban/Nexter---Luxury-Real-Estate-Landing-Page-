@@ -1,3 +1,23 @@
+# [1.1.0](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/compare/v1.0.1...v1.1.0) (2023-08-09)
+
+
+### Bug Fixes
+
+* ci fix ([82981ee](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/82981ee653f70c2ed3632388c411b526a5a9c9f6))
+* ci issues ([37a50e2](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/37a50e220b7247420959da22d78342638b23e52c))
+* **ci:** issues ([988fec1](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/988fec1dc525982f7849d9e8430be54b0730bccb))
+
+
+### Features
+
+* **assets:** adjusted ([352fdca](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/352fdca6dac5c92856f8a09eb232379189b4f53d))
+* **assets:** refactored assets module ([4c2bb4f](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/4c2bb4f076923ba807ef28b15c1a93310da30fcd))
+* ci package ([65649b8](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/65649b8efd5b87906b8ce28e4e8255bb2d15221c))
+* **ci:** issues ([eb6ac7a](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/eb6ac7a112fbadc70a29698124d8671e85b637cb))
+* **frontend:** adjusted ([3340b79](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/3340b79762dd74a56b05b9082db54c27a2a4918e))
+* **gh-actions:** new workflows ([e793c6e](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/e793c6e4e5d1f170cd838f6c71836775dc7f691a))
+* **structure:** refactgored ([b554f81](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/b554f81ba0241707a42230713d98e1fda08325aa))
+
 ## [1.0.1](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/compare/v1.0.0...v1.0.1) (2022-10-20)
 
 
