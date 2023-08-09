@@ -55,8 +55,8 @@ jobs:
       - name: "📦  Install Frontend Landing Website dependencies"
         # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
         run: |
-          bash modulize.bash -e prod -p install -m assets
-          bash modulize.bash -e prod -p install -m poc_nexter-landing
+          bash modulize.bash -e gh_pages -p install -m assets
+          bash modulize.bash -e gh_pages -p install -m poc_nexter-landing
 
       - name: "🏗️  Build Frontend Landing Website For GitHub Pages"
         # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
