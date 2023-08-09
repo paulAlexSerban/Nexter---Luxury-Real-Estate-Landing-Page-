@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/compare/v1.1.0...v1.2.0) (2023-08-09)
+
+
+### Features
+
+* **ci:** issues ([91277d8](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/91277d89515a171c4792a6a0c9903639cd8df34f))
+* **restructure:** split per fragments ([9042443](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/commit/904244342925dfc467113fe5a02c87ee88ad286a))
+
 # [1.1.0](https://github.com/paulAlexSerban/prj--nexter-luxury-real-estate--landing-page/compare/v1.0.1...v1.1.0) (2023-08-09)
 
 
