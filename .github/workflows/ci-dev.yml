@@ -23,28 +23,22 @@ jobs:
       NODE_VERSION: 16.19.0
       SITE_URL: https://paulalexserban.github.io/prj--nexter-luxury-real-estate--landing-page
     steps:
-      - name: "📥  Checkout repository"
+      - name: "📥 checkout repository"
         uses: actions/checkout@v3
-
-      - name: "🔍  Verify Changed Files"
-        uses: tj-actions/changed-files@v35
-        id: changed-frontend-landing-website-files
         with:
-          files: ${{ env.FE_LANDING_PROJECT_ROOT }}/**/*
+          fetch-depth: 0
 
       - name: "🔄  Cache node_modules"
-        if: ${{ always() }}
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
-
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: ${{ runner.os }}-node-
+      
       - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
-        if: ${{ always() }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
+            node-version: ${{ env.NODE_VERSION }}
 
       - name: "🔧  Install npm@latest & CI Deps"
         if: ${{ always() }}
