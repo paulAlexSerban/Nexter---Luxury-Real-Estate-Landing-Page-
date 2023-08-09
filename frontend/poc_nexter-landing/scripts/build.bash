@@ -28,12 +28,14 @@ elif [[ $ENV == "prod" ]]; then
 fi
 
 echo "Building poc_nexter-landing..."
-if [ -d ../public ]; then
+
+if [ -d ../src/public ]; then
   echo "Removing old public folder..."
   rm -rfv ../src/public
   mkdir ../src/public
+else 
+  mkdir ../src/public
 fi
-mkdir ../src/public
 
 cp -rfv ../../../assets/dist/* ../src/public
 npm --prefix .. run build

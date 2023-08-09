@@ -61,6 +61,7 @@ jobs:
       - name: "🏗️  Build Frontend Landing Website For GitHub Pages"
         # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
         run: |
+          bash modulize.bash -e prod -p process -m assets
           bash modulize.bash -e gh_pages -p build
 
       - name: "🚚  Package Frontend Landing Website"

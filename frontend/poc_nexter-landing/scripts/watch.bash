@@ -13,6 +13,9 @@ if [ -d ../src/public ]; then
 else 
   mkdir ../src/public
 fi
+
 cp -rfv ../../../assets/dist/* ../src/public
+
 export PUBLIC_PATH="/"
+
 npm --prefix .. run watch
