@@ -1,0 +1,76 @@
+---
+name: Develop Website
+
+on:
+  push:
+    branches:
+      - release
+      - main
+      - develop
+
+  pull_request:
+    types: [synchronize]
+
+  workflow_dispatch:
+
+jobs:
+  build-frontend:
+    name: Build Frontend Website
+    runs-on: ubuntu-latest
+    env:
+      ASSETS_ROOT: assets
+      FE_LANDING_PROJECT_ROOT: frontend/poc_nexter-landing
+      NODE_VERSION: 16.19.0
+      SITE_URL: https://paulalexserban.github.io/prj--nexter-luxury-real-estate--landing-page
+    steps:
+      - name: "📥 checkout repository"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "🔄  Cache node_modules"
+        uses: actions/cache@v3
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: ${{ runner.os }}-node-
+
+      - name: "🔍  Verify Changed Files"
+        uses: tj-actions/changed-files@v35
+        id: changed-frontend-landing-website-files
+        with:
+          files: ${{ env.FE_LANDING_PROJECT_ROOT }}/**/*
+
+      - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
+        uses: actions/setup-node@v3
+        with:
+            node-version: ${{ env.NODE_VERSION }}
+
+      - name: "🔧  Install npm@latest & CI Deps"
+        if: ${{ always() }}
+        run: |
+          npm i -g npm@latest
+          npm ci
+
+      - name: "📦  Install Frontend Landing Website dependencies"
+        # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e gh_pages -p install -m assets
+          bash modulize.bash -e gh_pages -p install -m poc_nexter-landing
+
+      - name: "🏗️  Build Frontend Landing Website For GitHub Pages"
+        # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e gh_pages -p process
+          bash modulize.bash -e gh_pages -p build
+
+      - name: "🚚  Package Frontend Landing Website"
+        # if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e prod -p package -m poc_nexter-landing
+
+      - name: "🚀 Deploy to GitHub Pages"
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: package/poc_nexter-landing
