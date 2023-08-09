@@ -1,0 +1,79 @@
+---
+name: Develop Website
+
+on:
+  push:
+    branches:
+      - release
+      - main
+      - develop
+
+  pull_request:
+    types: [synchronize]
+
+  workflow_dispatch:
+
+jobs:
+  build-frontend:
+    name: Build Frontend Website
+    runs-on: ubuntu-latest
+    env:
+      ASSETS_ROOT: assets
+      FE_LANDING_PROJECT_ROOT: frontend/prj--nexter-luxury-real-estate--landing-page
+      NODE_VERSION: 16.19.0
+      SITE_URL: https://paulalexserban.github.io/prj--nexter-luxury-real-estate--landing-page
+    steps:
+      - name: "📥  Checkout repository"
+        uses: actions/checkout@v3
+
+      - name: "🔍  Verify Changed Files"
+        uses: tj-actions/changed-files@v35
+        id: changed-frontend-landing-website-files
+        with:
+          files: ${{ env.FE_LANDING_PROJECT_ROOT }}/**/*
+
+      - name: "🔄  Cache node_modules"
+        if: ${{ always() }}
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: "🔧  Setup NodeJS ${{ env.NODE_VERSION }}"
+        if: ${{ always() }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: "🔧  Install npm@latest & CI Deps"
+        if: ${{ always() }}
+        run: |
+          npm i -g npm@latest
+          npm ci
+
+      - name: "📦  Install Frontend Landing Website dependencies"
+        if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e prod -p install -m assets
+          bash modulize.bash -e prod -p install -m prj--nexter-luxury-real-estate--landing-page
+
+      - name: "🏗️  Build Frontend Landing Website For GitHub Pages"
+        if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e gh_pages -p build
+
+      - name: "🚚  Package Frontend Landing Website"
+        if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: |
+          bash modulize.bash -e prod -p package -m prj--nexter-luxury-real-estate--landing-page
+
+      - name: "Configure git"
+        run: |
+          git config --global user.email "paul.alex.serban@gmail.com"
+          git config --global user.name "paulAlexSerban"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: "🚀 Deploy to Test (GitHub Pages)"
+        if: ${{ steps.changed-frontend-landing-website-files.outputs.any_changed == 'true' }}
+        run: npx gh-pages -d package/prj--nexter-luxury-real-estate--landing-page --branch gh-pages-test -t true
